@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compact Form Mockup · A — Premium Compact Card</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:#0F2647; --navy-deep:#0A1B33; --gold:#C9B68A; --gold-deep:#A89760;
+    --cream:#FAF8F3; --soft:#F4F1EA; --ink:#1A1A2E; --ink-soft:#4A4A5E; --line:#E8E2D5;
+    /* TURUNCU PALET ADAYLARI — kullanıcı seçecek */
+    --orange-1: #E85A2C;  /* Modern Vermillion — dengeli, modern */
+    --orange-2: #F26A21;  /* Construction Orange — inşaat çağrışımı */
+    --orange-3: #D9501F;  /* Burnt Sienna — premium, lüks */
+    --orange-4: #FF5C39;  /* Tesla Coral — vibrant, parlak */
+    /* Aktif: V1 */
+    --accent: var(--orange-1);
+    --accent-hover: #C44A23;
+  }
+  body { font-family:'Inter',sans-serif; color:var(--ink); background:var(--soft); padding:40px 20px; }
+  .font-serif { font-family:'Cormorant Garamond',serif; }
+
+  /* COMPACT FORM CARD */
+  .form-card {
+    background: var(--navy);
+    border-radius: 6px;
+    padding: 28px;
+    color: #fff;
+    box-shadow: 0 20px 60px rgba(15,38,71,.25);
+    position: relative;
+    overflow: hidden;
+  }
+  .form-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(circle at 80% 0%, rgba(232,90,44,.18), transparent 50%),
+                radial-gradient(circle at 0% 100%, rgba(201,182,138,.10), transparent 50%);
+    pointer-events: none;
+  }
+  .form-card > * { position: relative; }
+
+  /* Bottom-line inputs */
+  .field {
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid rgba(255,255,255,.2);
+    padding: 12px 0 8px;
+    color: #fff;
+    font-size: 14px;
+    width: 100%;
+    transition: border-color .2s;
+    outline: none;
+  }
+  .field::placeholder { color: rgba(255,255,255,.4); }
+  .field:focus { border-bottom-color: var(--accent); }
+  .field-label {
+    font-size: 11px;
+    color: rgba(255,255,255,.55);
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    margin-bottom: 0;
+  }
+
+  /* Chip buttons (radio replacement) */
+  .chip-group { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin-top: 6px; }
+  .chip {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.15);
+    color: rgba(255,255,255,.85);
+    padding: 9px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .chip:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.3); }
+  .chip-input { display: none; }
+  .chip-input:checked + .chip {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    font-weight: 500;
+  }
+
+  /* Submit */
+  .submit-btn {
+    background: var(--accent);
+    color: #fff;
+    border: 0;
+    padding: 16px 24px;
+    width: 100%;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: all .2s;
+    letter-spacing: .03em;
+    box-shadow: 0 4px 14px rgba(232,90,44,.35);
+  }
+  .submit-btn:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(232,90,44,.45); }
+
+  /* KVKK */
+  .kvkk { display: flex; align-items: flex-start; gap: 8px; font-size: 11px; color: rgba(255,255,255,.65); line-height: 1.5; margin: 4px 0; }
+  .kvkk input { margin-top: 3px; accent-color: var(--accent); }
+
+  /* WhatsApp alt */
+  .wa-link {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 4px;
+    color: #fff;
+    font-size: 13px;
+    margin-top: 12px;
+    transition: border-color .2s;
+    text-decoration: none;
+  }
+  .wa-link:hover { border-color: var(--accent); }
+
+  /* PALET SWATCHES (üst tarafta gösterim) */
+  .palette { background: #fff; padding: 24px; border-radius: 6px; margin-bottom: 30px; box-shadow: 0 4px 14px rgba(15,38,71,.06); }
+  .palette h3 { font-family:'Cormorant Garamond',serif; font-size: 22px; color: var(--navy); margin-bottom: 6px; }
+  .palette p { font-size: 13px; color: var(--ink-soft); margin-bottom: 18px; }
+  .swatch-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .swatch {
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    transition: transform .15s;
+  }
+  .swatch:hover { transform: translateY(-3px); }
+  .swatch-color { height: 70px; }
+  .swatch-info { padding: 10px 12px; background: #fff; }
+  .swatch-info strong { display: block; font-size: 13px; color: var(--ink); }
+  .swatch-info code { font-size: 11px; color: var(--ink-soft); }
+  .swatch-info span { font-size: 10px; color: var(--gold-deep); display: block; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<div class="max-w-4xl mx-auto">
+
+  <!-- Renk paleti tanıtım -->
+  <div class="palette">
+    <h3>Turuncu Palet — 4 Aday</h3>
+    <p>Avla brand'ı için 4 farklı turuncu ton. Form'da şu an aktif: <strong style="color:var(--orange-1)">V1 — Modern Vermillion</strong>. Aşağıdaki swatch'lara tıklayıp formu canlı görebilirsin.</p>
+    <div class="swatch-row">
+      <div class="swatch" onclick="setAccent('#E85A2C','#C44A23','V1')">
+        <div class="swatch-color" style="background:#E85A2C"></div>
+        <div class="swatch-info"><strong>V1 — Modern Vermillion</strong><code>#E85A2C</code><span>Önerim — Dengeli + Modern</span></div>
+      </div>
+      <div class="swatch" onclick="setAccent('#F26A21','#D55718','V2')">
+        <div class="swatch-color" style="background:#F26A21"></div>
+        <div class="swatch-info"><strong>V2 — Construction Orange</strong><code>#F26A21</code><span>İnşaat sektörü çağrışımı</span></div>
+      </div>
+      <div class="swatch" onclick="setAccent('#D9501F','#B4421A','V3')">
+        <div class="swatch-color" style="background:#D9501F"></div>
+        <div class="swatch-info"><strong>V3 — Burnt Sienna</strong><code>#D9501F</code><span>Olgun + Premium + Lüks</span></div>
+      </div>
+      <div class="swatch" onclick="setAccent('#FF5C39','#E04A2C','V4')">
+        <div class="swatch-color" style="background:#FF5C39"></div>
+        <div class="swatch-info"><strong>V4 — Tesla Coral</strong><code>#FF5C39</code><span>Vibrant + Tech</span></div>
+      </div>
+    </div>
+    <div id="active-label" style="margin-top:18px;font-size:12px;color:var(--ink-soft)">Aktif palet: <strong style="color:#E85A2C">V1 — Modern Vermillion (#E85A2C)</strong></div>
+  </div>
+
+  <!-- ASIL FORM MOCKUP -->
+  <div class="form-card">
+
+    <div class="flex items-center justify-between mb-5">
+      <div class="inline-block px-3 py-1 rounded text-[11px] tracking-[0.15em] uppercase font-medium" style="background:rgba(255,255,255,.08);border:1px solid rgba(232,90,44,.4);color:var(--orange-1)" id="badge-orange">Ücretsiz Danışmanlık</div>
+      <div class="text-[10px] uppercase tracking-wider" style="color:rgba(255,255,255,.5)">~30 sn</div>
+    </div>
+
+    <h3 class="font-serif text-2xl mb-2 leading-tight">Profilinize özel<br><span style="color:var(--gold)">yol haritası</span></h3>
+    <p class="text-[12px] mb-6" style="color:rgba(255,255,255,.7)">3 sorulu kısa form · 24 saat içinde uzman dönüşü</p>
+
+    <form id="leadForm" autocomplete="on">
+
+      <!-- Ad Soyad: TEK alan -->
+      <div class="mb-5">
+        <label class="field-label" for="fullName">Ad Soyad</label>
+        <input class="field" id="fullName" type="text" name="fullname" required placeholder="Mehmet Demir" autocomplete="name">
+      </div>
+
+      <!-- Email + Telefon yan yana -->
+      <div class="grid grid-cols-2 gap-4 mb-5">
+        <div>
+          <label class="field-label" for="email">E-posta</label>
+          <input class="field" id="email" type="email" name="email" required placeholder="ornek@email.com" autocomplete="email">
+        </div>
+        <div>
+          <label class="field-label" for="phone">Telefon</label>
+          <input class="field" id="phone" type="tel" name="phone" required placeholder="+90 5xx xxx xx xx" autocomplete="tel">
+        </div>
+      </div>
+
+      <!-- Bütçe: chip butonlar -->
+      <div class="mb-5">
+        <label class="field-label">Yatırım bütçesi</label>
+        <div class="chip-group">
+          <label><input type="radio" name="budget" value="250-400" class="chip-input"><span class="chip">€250K – 400K</span></label>
+          <label><input type="radio" name="budget" value="400-800" class="chip-input"><span class="chip">€400K – 800K</span></label>
+          <label><input type="radio" name="budget" value="800+" class="chip-input"><span class="chip">€800K +</span></label>
+        </div>
+      </div>
+
+      <!-- Zaman: chip butonlar -->
+      <div class="mb-6">
+        <label class="field-label">Yatırıma ne zaman hazırsınız?</label>
+        <div class="chip-group">
+          <label><input type="radio" name="timing" value="1m" class="chip-input"><span class="chip">1 ay içinde</span></label>
+          <label><input type="radio" name="timing" value="3m" class="chip-input"><span class="chip">1 – 3 ay</span></label>
+          <label><input type="radio" name="timing" value="6m+" class="chip-input"><span class="chip">3 ay ve sonra</span></label>
+        </div>
+      </div>
+
+      <!-- KVKK -->
+      <label class="kvkk">
+        <input type="checkbox" required>
+        <span>Avla Real Estate tarafından telefon, WhatsApp ve e-posta yoluyla iletişime geçilmesini kabul ediyorum. KVKK kapsamında tüm haklarım saklıdır.</span>
+      </label>
+
+      <!-- Submit -->
+      <button type="submit" class="submit-btn">Ücretsiz Yol Haritası İste →</button>
+
+      <!-- WhatsApp alternatif -->
+      <a href="https://wa.me/905322822657" target="_blank" rel="noopener" class="wa-link">
+        <span style="color:#25D366;font-weight:700">W</span>
+        Dilerseniz hemen WhatsApp ile iletişime geçin
+      </a>
+
+      <div style="text-align:center;font-size:10px;color:rgba(255,255,255,.5);margin-top:12px;letter-spacing:.04em">
+        Bilgileriniz gizli tutulur · KVKK uyumlu
+      </div>
+
+    </form>
+  </div>
+
+</div>
+
+<script>
+function setAccent(hex, hover, label){
+  const root = document.documentElement.style;
+  root.setProperty('--accent', hex);
+  root.setProperty('--accent-hover', hover);
+  document.getElementById('active-label').innerHTML = 'Aktif palet: <strong style="color:'+hex+'">' + label + ' ('+hex+')</strong>';
+  // Submit shadow rengi de güncelle (inline override)
+  const btn = document.querySelector('.submit-btn');
+  if(btn){
+    const rgb = hex.match(/\w\w/g).map(x => parseInt(x,16)).join(',');
+    btn.style.boxShadow = '0 4px 14px rgba('+rgb+',.35)';
+  }
+  // Badge border rengi
+  const badge = document.getElementById('badge-orange');
+  if(badge) {
+    badge.style.borderColor = hex.replace(')', '').replace(/^#/, 'rgba(').replace(/(.{2})(.{2})(.{2})/, (m,r,g,b) => parseInt(r,16)+','+parseInt(g,16)+','+parseInt(b,16)+',.4)') + (hex.length === 7 ? ')' : '');
+    badge.style.color = hex;
+  }
+}
+
+document.getElementById('leadForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  alert('Mockup — gerçek submit yapılmıyor. Bu form HubSpot Forms API\'ye fetch ile POST atacak.');
+});
+</script>
+
+</body>
+</html>

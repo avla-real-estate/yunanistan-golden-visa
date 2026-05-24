@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compact Form · B — Beyaz fon + Tesla Coral</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:#0F2647; --navy-deep:#0A1B33; --gold:#C9B68A; --gold-deep:#A89760;
+    --cream:#FAF8F3; --soft:#F4F1EA; --ink:#1A1A2E; --ink-soft:#4A4A5E; --line:#E8E2D5;
+    --coral:#FF5C39; --coral-hover:#E04A2C; --coral-soft:#FFEAE3;
+  }
+  body { font-family:'Inter',sans-serif; color:var(--ink); background:var(--cream); padding:40px 20px; }
+  .font-serif { font-family:'Cormorant Garamond',serif; }
+
+  /* WHITE FORM CARD */
+  .form-card {
+    background: #fff;
+    border-radius: 6px;
+    padding: 32px 30px;
+    border: 1px solid var(--line);
+    box-shadow: 0 12px 36px rgba(15,38,71,.06);
+    position: relative;
+  }
+  /* Hafif turuncu kenar accent — premium tıpkı bir zarf gibi */
+  .form-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--coral) 0%, var(--coral) 40%, transparent 100%);
+    border-radius: 6px 6px 0 0;
+  }
+
+  .form-card h3 { color: var(--navy); }
+
+  /* Bottom-line inputs (Stripe Atlas tarzı) */
+  .field {
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+    padding: 10px 0 8px;
+    color: var(--ink);
+    font-size: 15px;
+    width: 100%;
+    transition: border-color .2s;
+    outline: none;
+  }
+  .field::placeholder { color: #B8B0A0; }
+  .field:focus { border-bottom-color: var(--coral); }
+  .field-label {
+    display: block;
+    font-size: 11px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    margin-bottom: 2px;
+    font-weight: 500;
+  }
+
+  /* Chip buttons */
+  .chip-group { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 6px; }
+  @media(min-width:540px){ .chip-group { grid-template-columns: 1fr 1fr 1fr 1fr; } }
+  .chip {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    padding: 10px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all .15s;
+    font-weight: 500;
+  }
+  .chip:hover { background: #fff; border-color: var(--coral); color: var(--coral); }
+  .chip-input { display: none; }
+  .chip-input:checked + .chip {
+    background: var(--coral);
+    border-color: var(--coral);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(255,92,57,.3);
+  }
+
+  /* SUBMIT — Tesla Coral */
+  .submit-btn {
+    background: var(--coral);
+    color: #fff;
+    border: 0;
+    padding: 16px 24px;
+    width: 100%;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: all .2s;
+    letter-spacing: .02em;
+    box-shadow: 0 6px 18px rgba(255,92,57,.35);
+  }
+  .submit-btn:hover { background: var(--coral-hover); transform: translateY(-1px); box-shadow: 0 8px 22px rgba(255,92,57,.45); }
+
+  /* KVKK */
+  .kvkk { display: flex; align-items: flex-start; gap: 8px; font-size: 11px; color: var(--ink-soft); line-height: 1.5; margin: 10px 0 0; }
+  .kvkk input { margin-top: 3px; accent-color: var(--coral); }
+
+  /* WhatsApp alternatif — lacivert outline */
+  .wa-link {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    color: var(--navy);
+    font-size: 13px;
+    margin-top: 10px;
+    transition: all .2s;
+    text-decoration: none;
+    background: #fff;
+    font-weight: 500;
+  }
+  .wa-link:hover { border-color: var(--navy); }
+
+  /* Badge */
+  .badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--coral-soft);
+    color: var(--coral);
+    border-radius: 999px;
+    font-size: 10px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  /* DİL KILAVUZU */
+  .guide { background: #fff; padding: 24px 28px; border-radius: 6px; margin-bottom: 30px; border: 1px solid var(--line); }
+  .guide h3 { font-family:'Cormorant Garamond',serif; font-size: 22px; color: var(--navy); margin-bottom: 6px; }
+  .guide p { font-size: 13px; color: var(--ink-soft); margin-bottom: 18px; line-height: 1.55; }
+  .container-examples { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+  .container-demo { padding: 14px; border-radius: 4px; font-size: 12px; }
+  .demo-navy { background: var(--navy); color: #fff; }
+  .demo-navy strong { color: var(--gold); display: block; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 4px; }
+  .demo-white { background: #fff; border: 1px solid var(--line); color: var(--ink); }
+  .demo-white strong { color: var(--coral); display: block; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<div class="max-w-3xl mx-auto">
+
+  <!-- Tasarım dili kılavuzu -->
+  <div class="guide">
+    <h3>Yeni Tasarım Dili — White Premium · Coral Accent</h3>
+    <p>Ana arka plan beyaz / krem. <strong>Lacivert</strong> sadece spesifik bilgi konteynerlerinde (top bar, hero badge bg, "Çok Dilli" section, footer CTA). <strong>Tesla Coral (#FF5C39)</strong> dikkat çekici tek vurgu — submit CTA, focus state, chip selected, link hover.</p>
+    <div class="container-examples">
+      <div class="container-demo demo-white"><strong>Beyaz: ana akış</strong>Form, içerik bölümleri, hero text, USP kartları, FAQ — sayfanın %75'i beyaz/krem üstünde. Lüks ferah his.</div>
+      <div class="container-demo demo-navy"><strong>Lacivert: ayrı konteynerler</strong>Top bar · Sami kartı arka plan · "Çok Dilli Yapı" CTA · Footer CTA — dikkat ve hiyerarşi.</div>
+    </div>
+  </div>
+
+  <!-- FORM MOCKUP -->
+  <div class="form-card">
+
+    <div class="flex items-center justify-between mb-1">
+      <span class="badge">Ücretsiz Danışmanlık</span>
+      <div class="text-[10px] uppercase tracking-wider" style="color:var(--ink-soft)">~30 sn</div>
+    </div>
+
+    <h3 class="font-serif text-3xl mb-2 leading-tight">Profilinize özel<br><span style="color:var(--gold-deep);font-style:italic">yol haritası</span></h3>
+    <p class="text-sm mb-7" style="color:var(--ink-soft)">4 sorulu kısa form · 24 saat içinde uzman dönüşü.</p>
+
+    <form id="leadForm" autocomplete="on">
+
+      <!-- Ad Soyad -->
+      <div class="mb-5">
+        <label class="field-label" for="fullName">Ad Soyad</label>
+        <input class="field" id="fullName" type="text" name="fullname" required placeholder="Mehmet Demir" autocomplete="name">
+      </div>
+
+      <!-- Email + Telefon -->
+      <div class="grid grid-cols-2 gap-5 mb-5">
+        <div>
+          <label class="field-label" for="email">E-posta</label>
+          <input class="field" id="email" type="email" name="email" required placeholder="ornek@email.com" autocomplete="email">
+        </div>
+        <div>
+          <label class="field-label" for="phone">Telefon</label>
+          <input class="field" id="phone" type="tel" name="phone" required placeholder="+90 5xx xxx xx xx" autocomplete="tel">
+        </div>
+      </div>
+
+      <!-- Bütçe — HubSpot enum: gv_yatrm_butcesi_web -->
+      <div class="mb-5">
+        <label class="field-label">Yatırım bütçesi</label>
+        <div class="chip-group">
+          <label><input type="radio" name="budget" value="€ 250-300 K" class="chip-input"><span class="chip">€ 250-300 K</span></label>
+          <label><input type="radio" name="budget" value="€ 300-350 K" class="chip-input"><span class="chip">€ 300-350 K</span></label>
+          <label><input type="radio" name="budget" value="€ 350-400 K" class="chip-input"><span class="chip">€ 350-400 K</span></label>
+          <label><input type="radio" name="budget" value="+ € 400 K" class="chip-input"><span class="chip">+ € 400 K</span></label>
+        </div>
+      </div>
+
+      <!-- Zaman — HubSpot enum: gv_yatrm_zamanlamas_web -->
+      <div class="mb-2">
+        <label class="field-label">Yatırıma ne zaman hazırsınız?</label>
+        <div class="chip-group">
+          <label><input type="radio" name="timing" value="Önümüzdeki 1-2 ay içinde" class="chip-input"><span class="chip">1-2 ay içinde</span></label>
+          <label><input type="radio" name="timing" value="3-4 ay arası" class="chip-input"><span class="chip">3-4 ay arası</span></label>
+          <label><input type="radio" name="timing" value="6-12 ay içinde" class="chip-input"><span class="chip">6-12 ay</span></label>
+          <label><input type="radio" name="timing" value="1 yıldan uzun" class="chip-input"><span class="chip">1 yıldan uzun</span></label>
+        </div>
+      </div>
+
+      <!-- KVKK -->
+      <label class="kvkk">
+        <input type="checkbox" required>
+        <span>Avla Real Estate tarafından telefon, WhatsApp ve e-posta yoluyla iletişime geçilmesini kabul ediyorum. KVKK kapsamında tüm haklarım saklıdır.</span>
+      </label>
+
+      <!-- Submit -->
+      <button type="submit" class="submit-btn">Ücretsiz Yol Haritası İste →</button>
+
+      <!-- WhatsApp alternatif -->
+      <a href="https://wa.me/905322822657" target="_blank" rel="noopener" class="wa-link">
+        <span style="color:#25D366;font-weight:700">W</span>
+        Dilerseniz hemen WhatsApp ile iletişime geçin
+      </a>
+
+      <div style="text-align:center;font-size:10px;color:var(--ink-soft);margin-top:14px;letter-spacing:.04em">
+        Bilgileriniz gizli tutulur · KVKK uyumlu
+      </div>
+
+    </form>
+  </div>
+
+  <!-- LACİVERT KONTEYNER ÖRNEK — sayfada nerede kullanılacak -->
+  <div style="margin-top:30px;padding:28px 30px;background:var(--navy);color:#fff;border-radius:6px;position:relative;overflow:hidden">
+    <div style="position:absolute;inset:0;opacity:.1;background:radial-gradient(circle at 80% 20%,var(--coral),transparent 50%)"></div>
+    <div style="position:relative">
+      <div style="font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Lacivert konteyner örneği</div>
+      <h3 class="font-serif" style="font-size:24px;margin-bottom:10px">Hâlâ kararsız mısınız?</h3>
+      <p style="font-size:13px;color:rgba(255,255,255,.75);margin-bottom:16px;max-width:480px">Sayfa içinde lacivert konteynerler hiyerarşi oluşturur — "buraya dikkat" der. Beyaz akışı bozar, ferahlığı korur.</p>
+      <a href="https://wa.me/905322822657" target="_blank" rel="noopener" style="display:inline-block;padding:12px 22px;background:var(--coral);color:#fff;border-radius:4px;font-size:13px;font-weight:600;text-decoration:none;box-shadow:0 4px 14px rgba(255,92,57,.35)">WhatsApp'tan Hemen Yazın →</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+document.getElementById('leadForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  alert('Mockup — gerçek submit yok. Onaylarsan HubSpot Forms API\'ye fetch ile POST atan versiyonu üretirim.');
+});
+</script>
+
+</body>
+</html>

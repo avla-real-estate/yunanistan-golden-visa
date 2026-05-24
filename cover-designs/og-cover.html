@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>OG Cover · 1200×630</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; text-rendering:geometricPrecision; }
+  html, body { width:1200px; height:630px; overflow:hidden; background:#0F2647; font-family:'Inter',sans-serif; }
+  .cover {
+    width:1200px; height:630px;
+    background:#0F2647;
+    position:relative; overflow:hidden;
+    color:#fff;
+  }
+
+  /* Arkaplan dekor: yumuşak ışık + altın halka */
+  .bg-glow1 { position:absolute; width:900px; height:900px; right:-300px; top:-300px;
+    background:radial-gradient(circle, rgba(201,182,138,.18) 0%, transparent 60%); }
+  .bg-glow2 { position:absolute; width:700px; height:700px; left:-200px; bottom:-200px;
+    background:radial-gradient(circle, rgba(255,92,57,.12) 0%, transparent 60%); }
+
+  /* Akropol stilize silüet — sağ alt, çok hafif */
+  .acropolis { position:absolute; right:60px; bottom:0; opacity:.05; }
+
+  /* İçerik kontainerı */
+  .content { position:relative; padding:48px 70px 50px; height:100%; display:flex; flex-direction:column; }
+
+  /* Üst bar: Avla logo (sol) + GV rozet (sağ) */
+  .top { display:flex; justify-content:space-between; align-items:center; height:80px; }
+  .avla-logo { height:62px; width:auto; filter:brightness(1.18); }
+  .gv-badge { height:120px; width:120px; filter:drop-shadow(0 6px 18px rgba(0,0,0,.35)); }
+
+  /* Hero metin */
+  .hero { margin-top:32px; flex:1; }
+  .eyebrow { display:inline-block; padding:7px 16px; background:rgba(255,92,57,.16);
+    border:1px solid rgba(255,92,57,.5); color:#FF7A5C;
+    font-size:11.5px; letter-spacing:.24em; text-transform:uppercase; border-radius:999px;
+    font-weight:700; margin-bottom:20px; }
+  h1 { font-family:'Cormorant Garamond',serif; font-size:76px; line-height:1.04;
+    font-weight:500; color:#fff; letter-spacing:-.01em; }
+  h1 .gold { color:#C9B68A; font-style:italic; display:block; margin-top:4px; }
+
+  /* Espri satırı */
+  .punch { margin-top:26px; font-size:23px; color:rgba(255,255,255,.94);
+    line-height:1.45; max-width:780px; font-weight:400; }
+  .punch .turk { color:#FF7A5C; font-style:italic; font-family:'Cormorant Garamond',serif;
+    font-weight:600; font-size:1.18em; padding:0 3px; }
+  .punch .coffee { font-size:1.05em; }
+
+  /* Alt: CTA + meta */
+  .bottom { display:flex; justify-content:space-between; align-items:flex-end; gap:30px; }
+  .cta { display:inline-flex; align-items:center; gap:12px;
+    background:#FF5C39; color:#fff; padding:18px 28px; border-radius:8px;
+    font-weight:700; font-size:18px; letter-spacing:.01em;
+    box-shadow:0 14px 32px rgba(255,92,57,.5); }
+  .cta .arrow { font-size:22px; }
+  .meta { display:flex; gap:28px; }
+  .meta .item { font-size:12px; color:rgba(255,255,255,.7); line-height:1.5; font-weight:400; }
+  .meta .item strong { display:block; color:#C9B68A; font-family:'Cormorant Garamond',serif;
+    font-size:23px; font-weight:600; margin-bottom:2px; letter-spacing:.01em; }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="bg-glow1"></div>
+  <div class="bg-glow2"></div>
+
+  <!-- Akropol stilize (SVG) — düşük opacity dekoratif -->
+  <svg class="acropolis" width="560" height="220" viewBox="0 0 600 240" fill="none">
+    <rect x="0" y="180" width="600" height="60" fill="#C9B68A"/>
+    <rect x="40" y="80" width="14" height="100" fill="#C9B68A"/>
+    <rect x="80" y="80" width="14" height="100" fill="#C9B68A"/>
+    <rect x="120" y="80" width="14" height="100" fill="#C9B68A"/>
+    <rect x="160" y="80" width="14" height="100" fill="#C9B68A"/>
+    <rect x="200" y="80" width="14" height="100" fill="#C9B68A"/>
+    <rect x="240" y="80" width="14" height="100" fill="#C9B68A"/>
+    <rect x="280" y="80" width="14" height="100" fill="#C9B68A"/>
+    <rect x="320" y="80" width="14" height="100" fill="#C9B68A"/>
+    <rect x="20" y="68" width="290" height="14" fill="#C9B68A"/>
+    <polygon points="20,68 165,20 310,68" fill="#C9B68A"/>
+  </svg>
+
+  <div class="content">
+    <div class="top">
+      <img class="avla-logo" src="../assets/logos/avla-kus-tight.png" alt="Avla Real Estate">
+      <img class="gv-badge" src="../assets/logos/golden-visa-badge.png" alt="Golden Visa Europe Greece">
+    </div>
+
+    <div class="hero">
+      <span class="eyebrow">Ücretsiz · 30 Saniye</span>
+      <h1>Yunanistan Golden Visa<span class="gold">akılcı bir AB yatırımı</span></h1>
+      <p class="punch">
+        <span class="turk">Türk</span> kahvenizi yudumlayın,<br>
+        biz size Atina yolunu çıkaralım. <span class="coffee">☕</span>
+      </p>
+    </div>
+
+    <div class="bottom">
+      <a class="cta">Ücretsiz yol haritası için 30 saniye <span class="arrow">→</span></a>
+      <div class="meta">
+        <div class="item"><strong>€250K</strong>Min. yatırım</div>
+        <div class="item"><strong>4-6 ay</strong>Tipik süreç</div>
+        <div class="item"><strong>24 saat</strong>Uzman dönüşü</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
