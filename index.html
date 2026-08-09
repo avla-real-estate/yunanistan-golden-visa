@@ -331,6 +331,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </div>
         </div>
 
+        <div class="mb-5">
+          <label class="field-label" for="city">Yaşadığınız Şehir</label>
+          <input class="field" id="city" type="text" name="city" placeholder="Örn. İstanbul" autocomplete="address-level2">
+        </div>
+
         <!-- Bütçe — HubSpot enum: gv_yatrm_butcesi_web -->
         <div class="mb-5">
           <label class="field-label">Yatırım bütçesi</label>
@@ -753,7 +758,7 @@ async function submitLeadForm(e){
   var firstname = (fd.get('firstname')||'').trim();
   var lastname = (fd.get('lastname')||'').trim();
   var email = (fd.get('email')||'').trim();
-  var phone = (fd.get('phone')||'').trim();
+  var phone = (fd.get('phone')||'').trim(); var city = (fd.get('city')||'').trim();
   var budget = fd.get('budget') || '';
   var timing = fd.get('timing') || '';
   var kvkk = form.querySelector('.kvkk-row input[type="checkbox"]');
@@ -794,7 +799,7 @@ async function submitLeadForm(e){
       { objectTypeId: '0-1', name: 'firstname', value: firstname },
       { objectTypeId: '0-1', name: 'lastname', value: lastname },
       { objectTypeId: '0-1', name: 'email', value: email },
-      { objectTypeId: '0-1', name: 'phone', value: phone },
+      { objectTypeId: '0-1', name: 'phone', value: phone }, { objectTypeId: '0-1', name: 'city', value: city },
       { objectTypeId: '0-1', name: 'gv_yatrm_butcesi_web', value: budget },
       { objectTypeId: '0-1', name: 'gv_yatrm_zamanlamas_web', value: timing },
       { objectTypeId: '0-1', name: 'gv_kvkk_onay_web', value: 'true' }
