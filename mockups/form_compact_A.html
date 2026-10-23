@@ -11,13 +11,13 @@
     --navy:#0F2647; --navy-deep:#0A1B33; --gold:#C9B68A; --gold-deep:#A89760;
     --cream:#FAF8F3; --soft:#F4F1EA; --ink:#1A1A2E; --ink-soft:#4A4A5E; --line:#E8E2D5;
     /* TURUNCU PALET ADAYLARI — kullanıcı seçecek */
-    --orange-1: #E85A2C;  /* Modern Vermillion — dengeli, modern */
-    --orange-2: #F26A21;  /* Construction Orange — inşaat çağrışımı */
-    --orange-3: #D9501F;  /* Burnt Sienna — premium, lüks */
-    --orange-4: #FF5C39;  /* Tesla Coral — vibrant, parlak */
+    --orange-1: #E30A17;  /* Modern Vermillion — dengeli, modern */
+    --orange-2: #E30A17;  /* Construction Orange — inşaat çağrışımı */
+    --orange-3: #E30A17;  /* Burnt Sienna — premium, lüks */
+    --orange-4: #E30A17;  /* Tesla Coral — vibrant, parlak */
     /* Aktif: V1 */
     --accent: var(--orange-1);
-    --accent-hover: #C44A23;
+    --accent-hover: #B8080F;
   }
   body { font-family:'Inter',sans-serif; color:var(--ink); background:var(--soft); padding:40px 20px; }
   .font-serif { font-family:'Cormorant Garamond',serif; }
@@ -25,7 +25,7 @@
   /* COMPACT FORM CARD */
   .form-card {
     background: var(--navy);
-    border-radius: 6px;
+    border-radius: 0;
     padding: 28px;
     color: #fff;
     box-shadow: 0 20px 60px rgba(15,38,71,.25);
@@ -34,7 +34,7 @@
   }
   .form-card::before {
     content: ''; position: absolute; inset: 0;
-    background: radial-gradient(circle at 80% 0%, rgba(232,90,44,.18), transparent 50%),
+    background: radial-gradient(circle at 80% 0%, rgba(227,10,23,.18), transparent 50%),
                 radial-gradient(circle at 0% 100%, rgba(201,182,138,.10), transparent 50%);
     pointer-events: none;
   }
@@ -69,7 +69,7 @@
     border: 1px solid rgba(255,255,255,.15);
     color: rgba(255,255,255,.85);
     padding: 9px 8px;
-    border-radius: 4px;
+    border-radius: 0;
     font-size: 12px;
     text-align: center;
     cursor: pointer;
@@ -93,14 +93,14 @@
     width: 100%;
     font-weight: 600;
     font-size: 15px;
-    border-radius: 4px;
+    border-radius: 0;
     cursor: pointer;
     margin-top: 8px;
     transition: all .2s;
     letter-spacing: .03em;
-    box-shadow: 0 4px 14px rgba(232,90,44,.35);
+    box-shadow: 0 4px 14px rgba(227,10,23,.35);
   }
-  .submit-btn:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(232,90,44,.45); }
+  .submit-btn:hover { background: #B8080F; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(227,10,23,.45);color:#fff!important;border-color:#B8080F}
 
   /* KVKK */
   .kvkk { display: flex; align-items: flex-start; gap: 8px; font-size: 11px; color: rgba(255,255,255,.65); line-height: 1.5; margin: 4px 0; }
@@ -111,7 +111,7 @@
     display: flex; align-items: center; justify-content: center; gap: 8px;
     padding: 12px;
     border: 1px solid rgba(255,255,255,.2);
-    border-radius: 4px;
+    border-radius: 0;
     color: #fff;
     font-size: 13px;
     margin-top: 12px;
@@ -121,12 +121,12 @@
   .wa-link:hover { border-color: var(--accent); }
 
   /* PALET SWATCHES (üst tarafta gösterim) */
-  .palette { background: #fff; padding: 24px; border-radius: 6px; margin-bottom: 30px; box-shadow: 0 4px 14px rgba(15,38,71,.06); }
+  .palette { background: #fff; padding: 24px; border-radius: 0; margin-bottom: 30px; box-shadow: 0 4px 14px rgba(15,38,71,.06); }
   .palette h3 { font-family:'Cormorant Garamond',serif; font-size: 22px; color: var(--navy); margin-bottom: 6px; }
   .palette p { font-size: 13px; color: var(--ink-soft); margin-bottom: 18px; }
   .swatch-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
   .swatch {
-    border-radius: 6px;
+    border-radius: 0;
     overflow: hidden;
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(0,0,0,.08);
@@ -150,30 +150,30 @@
     <p>Avla brand'ı için 4 farklı turuncu ton. Form'da şu an aktif: <strong style="color:var(--orange-1)">V1 — Modern Vermillion</strong>. Aşağıdaki swatch'lara tıklayıp formu canlı görebilirsin.</p>
     <div class="swatch-row">
       <div class="swatch" onclick="setAccent('#E85A2C','#C44A23','V1')">
-        <div class="swatch-color" style="background:#E85A2C"></div>
+        <div class="swatch-color" style="background:#E30A17"></div>
         <div class="swatch-info"><strong>V1 — Modern Vermillion</strong><code>#E85A2C</code><span>Önerim — Dengeli + Modern</span></div>
       </div>
       <div class="swatch" onclick="setAccent('#F26A21','#D55718','V2')">
-        <div class="swatch-color" style="background:#F26A21"></div>
+        <div class="swatch-color" style="background:#E30A17"></div>
         <div class="swatch-info"><strong>V2 — Construction Orange</strong><code>#F26A21</code><span>İnşaat sektörü çağrışımı</span></div>
       </div>
       <div class="swatch" onclick="setAccent('#D9501F','#B4421A','V3')">
-        <div class="swatch-color" style="background:#D9501F"></div>
+        <div class="swatch-color" style="background:#E30A17"></div>
         <div class="swatch-info"><strong>V3 — Burnt Sienna</strong><code>#D9501F</code><span>Olgun + Premium + Lüks</span></div>
       </div>
       <div class="swatch" onclick="setAccent('#FF5C39','#E04A2C','V4')">
-        <div class="swatch-color" style="background:#FF5C39"></div>
+        <div class="swatch-color" style="background:#E30A17"></div>
         <div class="swatch-info"><strong>V4 — Tesla Coral</strong><code>#FF5C39</code><span>Vibrant + Tech</span></div>
       </div>
     </div>
-    <div id="active-label" style="margin-top:18px;font-size:12px;color:var(--ink-soft)">Aktif palet: <strong style="color:#E85A2C">V1 — Modern Vermillion (#E85A2C)</strong></div>
+    <div id="active-label" style="margin-top:18px;font-size:12px;color:var(--ink-soft)">Aktif palet: <strong style="color:#E30A17">V1 — Modern Vermillion (#E85A2C)</strong></div>
   </div>
 
   <!-- ASIL FORM MOCKUP -->
   <div class="form-card">
 
     <div class="flex items-center justify-between mb-5">
-      <div class="inline-block px-3 py-1 rounded text-[11px] tracking-[0.15em] uppercase font-medium" style="background:rgba(255,255,255,.08);border:1px solid rgba(232,90,44,.4);color:var(--orange-1)" id="badge-orange">Ücretsiz Danışmanlık</div>
+      <div class="inline-block px-3 py-1 rounded text-[11px] tracking-[0.15em] uppercase font-medium" style="background:rgba(255,255,255,.08);border:1px solid rgba(227,10,23,.4);color:var(--orange-1)" id="badge-orange">Ücretsiz Danışmanlık</div>
       <div class="text-[10px] uppercase tracking-wider" style="color:rgba(255,255,255,.5)">~30 sn</div>
     </div>
 
